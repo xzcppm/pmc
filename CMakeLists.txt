@@ -20,14 +20,18 @@ else()
         set_property(TARGET pmc PROPERTY POSITION_INDEPENDENT_CODE 1)
 endif()
 
-target_compile_options(pmc PRIVATE
-        -Wall
-        -Werror
-        -Wextra
-        -Wno-format
-        -Wno-sign-compare
-        -Wno-unused-function
-)
+if(MSVC)
+	target_compile_options(pmc PRIVATE /W4 /Wall)
+else()
+	target_compile_options(pmc PRIVATE
+			-Wall
+			-Werror
+			-Wextra
+			-Wno-format
+			-Wno-sign-compare
+			-Wno-unused-function
+	)
+endif()
 
 target_include_directories(pmc PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/include>
