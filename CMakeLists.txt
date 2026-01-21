@@ -21,7 +21,7 @@ else()
 endif()
 
 if(MSVC)
-	target_compile_options(pmc PRIVATE /W4 /Wall)
+	target_compile_options(pmc PRIVATE /W)
 else()
 	target_compile_options(pmc PRIVATE
 			-Wall
